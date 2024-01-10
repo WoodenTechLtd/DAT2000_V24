@@ -8,7 +8,6 @@ from jan8.hent_data import Beatles
 
 dotenv.load_dotenv("db.env")
 CONNSTR = os.getenv("CONNSTR")
-#CONNSTR="postgresql+psycopg2://postgres:mysecretpassword@localhost/postgres"
 
 @pytest.fixture()
 def engine():
