@@ -7,9 +7,7 @@ from dotenv import load_dotenv
 
 from jan8.hent_data import Beatles
 
-load_dotenv("db.env")
-print(os.getenv("CONNSTR"))
-
+dotenv.load_dotenv("db.env")
 CONNSTR = os.getenv("CONNSTR")
 
 @pytest.fixture()
