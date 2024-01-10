@@ -7,8 +7,8 @@ from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, 
 from jan8.hent_data import Beatles
 
 dotenv.load_dotenv("db.env")
-#CONNSTR = os.getenv("CONNSTR")
-CONNSTR="postgresql+psycopg2://postgres:mysecretpassword@localhost/postgres"
+CONNSTR = os.getenv("CONNSTR")
+#CONNSTR="postgresql+psycopg2://postgres:mysecretpassword@localhost/postgres"
 
 @pytest.fixture()
 def engine():
