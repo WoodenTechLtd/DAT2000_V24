@@ -17,13 +17,14 @@ For å kunne utforske en graf visuelt så starter vi Graph Explorer (fra nytt te
  ```
 
 Vi kan nå åpne Jena Fuseki ved å gå til http://localhost:3030/
+Graph explorer kan åpnes ved å gå til  http://localhost:8002/
 
 
 ## Oppgave 1:
 0. Åpne Jena Fuseki og sjekk at du får kjørt default-spørringen. 
 1. Søk etter Fido i Graph explorer, og se om du kan få opp alle ressursene vi har laget i en visualisering.
 2. Søk etter Lucy i Graph explorer - hvorfor er det ingen resultater?
-3. Gjør så alle ressursene det er snakk om har en rdfs:label. Vi må altså legge til f.eks. `ex:Lucy rdfs:label "Lucy" .`. Sjekk at det går an å søke nå. Du må restarte Jena men trenger ikke restarte graph explorer, bare trykk refresh. Pass opp for små skrivefeil.
+3. Gjør så alle ressursene det er snakk om har en rdfs:label. Vi må altså legge til f.eks. `ex:Lucy rdfs:label "Lucy" .` i filen lecture.ttl. Sjekk at det går an å søke nå. Du må restarte Jena men trenger ikke restarte graph explorer, bare trykk refresh. Pass opp for små skrivefeil.
 
 ### Oppgave 2:
 Dette kan være et nyttig utgangspunkt for disse oppgavene.

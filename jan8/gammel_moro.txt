@@ -1,4 +1,0 @@
-#Av tekniske årsaker må vi sette autocommit for å få lov til å opprette en ny database.
-with engine.connect().execution_options(isolation_level="AUTOCOMMIT") as c:
-    c.execute(text("DROP DATABASE IF EXISTS mydb;"))
-    c.execute(text("CREATE DATABASE mydb;"))
