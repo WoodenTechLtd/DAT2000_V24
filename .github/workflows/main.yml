@@ -1,0 +1,19 @@
+name: testFlow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  your-job-name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Use the secret in the workflow
+        env:
+          CONNSTR: ${{ secrets.CONNSTR }}  # Retrieve the secret value
+        run: |
+          # Use $CONNSTR in your workflow or pass it as an environment variable
+          # For example:
+          echo "The secret value is $CONNSTR"
