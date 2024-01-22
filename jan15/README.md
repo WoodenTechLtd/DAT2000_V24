@@ -41,7 +41,39 @@ SELECT * WHERE {
 ```
 1. Sjekk at du får kjørt alle spørringene fra forelesningsnotatene. 
 2. Skriv en spørring som henter alle kattene, og navnene deres
-3. Skriv en spørring som henter navnet til alle hundene til noen som har en fisk, og navnet til denne personen, og navnet til fisken. 
+
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pets: <http://example.net/pets#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#> 
+
+SELECT ?catName
+WHERE {
+  ?cat a pets:Cat .
+  ?cat rdfs:label ?catName
+}
+```
+   
+4. Skriv en spørring som henter navnet til alle hundene til noen som har en fisk, og navnet til denne personen, og navnet til fisken.
+
+```
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#> 
+
+SELECT ?ownerName ?fishName ?dogName
+WHERE {
+  ?owner pets:hasPet ?dog .
+  ?owner pets:hasPet ?fish .
+  ?dog a pets:Dog .
+  ?fish a pets:Fish .
+  ?owner rdfs:label ?ownerName .
+  ?fish rdfs:label ?fishName .
+  ?dog rdfs:label ?dogName .
+}
+
+```
 
 ## Oppgave 3:
 Dette kan være et nyttig utgangspunkt for disse oppgavene.

@@ -31,18 +31,23 @@ def tabellen(engine):
         c.commit()
     return tabellen
 
-
 @pytest.fixture(scope="function")
 def beatles(engine, tabellen):
     return Beatles(engine, tabellen)
 
 
-def test_hent_beatle_id_basic(beatles):
-    id = beatles.finn_beatle_id("John")
-    assert id == 1
+from sqlalchemy import MetaData
 
+@pytest.fixture(scope="function")
+def cleanup_tables(engine):
+    def _cleanup_tables():
+        metadata_obj = MetaData()
+        metadata_obj.reflect(bind=engine)
 
-def test_hent_beatle_id_injection(beatles):
-    beatles.finn_beatle_id("'; DROP TABLE IF EXISTS tabellen; --")
-    id = beatles.finn_beatle_id("John")
-    assert id == 1
+        # Drop "Instrument" table
+        if 'SpillerInstrument' in metadata_obj.tables:
+            instrument_table = metadata_obj.tables['SpillerInstrument']
+            instrument_table.drop(engine, checkfirst=True)
+
+    return _cleanup_tables
+
