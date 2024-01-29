@@ -1,6 +1,7 @@
 # Oppgaver til øving i DAT2000 22. Januar 2024
 Hvis du vil hente ned disse endringene til repoet ditt så kjør fra mappen hvor du har klonet det ut:
 ```
+git add --all
 git stash save 
 git pull
 ```
