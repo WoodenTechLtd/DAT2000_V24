@@ -1,0 +1,12 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pets: <http://example.net/pets#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX ex:<http://example.net/instances#>
+#Lag en spørring som henter navnene til alle kjæledyr som er pets:CuddlyPet.
+
+SELECT ?petname ?pet_type WHERE {
+  ?pet rdfs:label ?petname .
+  ?pet a ?pet_type .
+  ?pet_type rdfs:subClassOf+ pets:CuddlyPet .
+}

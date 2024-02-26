@@ -1,0 +1,34 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pets: <http://example.net/pets#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#> 
+PREFIX ex:<http://example.net/instances#>
+
+#Skriv en spørring som henter navnet til alle hundene til noen som har en fisk, og navnet til denne personen
+SELECT ?dog_name ?owner_name WHERE {
+  ?owner pets:hasPet ?dog .
+  ?dog a pets:Dog .
+  ?dog rdfs:label ?dog_name .
+  ?owner rdfs:label ?owner_name .
+  FILTER EXISTS {
+  	  ?owner pets:hasPet ?fish .
+  	  ?fish a pets:Fish .
+  }
+}
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pets: <http://example.net/pets#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX ex:<http://example.net/instances#>
+
+#Skriv en spørring som henter navnet til alle hundene til noen som har en fisk, og navnet til denne personen, og navnet til fisken.
+SELECT ?dog_name ?owner_name ?fish_name WHERE {
+  ?owner pets:hasPet ?fish .
+  ?fish a pets:Fish .
+  ?owner pets:hasPet ?dog .
+  ?dog a pets:Dog .
+  ?dog rdfs:label ?dog_name .
+  ?owner rdfs:label ?owner_name .
+  ?fish rdfs:label ?fish_name .
+}

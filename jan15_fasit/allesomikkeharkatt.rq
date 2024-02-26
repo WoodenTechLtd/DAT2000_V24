@@ -1,0 +1,14 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pets: <http://example.net/pets#>
+PREFIX owl:<http://www.w3.org/2002/07/owl#>
+PREFIX ex:<http://example.net/instances#>
+#Skriv en spørring som finner navnet på alle dyreeiere som ikke har en katt
+SELECT DISTINCT ?name WHERE {
+  ?person rdfs:label ?name .
+  ?person pets:hasPet ?somePet .
+  FILTER NOT EXISTS {
+    ?person pets:hasPet ?pet .
+    ?pet a pets:Cat .
+  }
+}
